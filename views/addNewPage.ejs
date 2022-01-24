@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     
+</head>
+<body>
+    <section class="container d-flex flex-column justify-content-center align-items-center">
+        <div class="text-center mt-3">
+            <h3> Add New Product</h3>
+        </div>
+        <form action="/ui/create" method="POST">
+            <div class="card" style="max-width: 450px;">
+                
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Enter Product Name</label>
+                        <input class="form-control" name="name" id="name" placeholder="" value="<%=data.name %>">
+                      </div>
+                      <div class="mb-3">
+                        <label for="price" class="form-label">Enter Product Price</label>
+                        <input  class="form-control" name="price" id="price" placeholder="" value="<%=data.price %>">
+                      </div>
+                      <div class="mb-3">
+                        <label for="activeColor" class="form-label" >Choose Product Color</label>
+                        <select class="form-select" aria-label="Default select example" name="activeColor" > 
+                        
+                          <option value="Red" <%=data.activeColor==='Red'?'selected':''%> >Red</option>
+                          <option value="Green" <%=data.activeColor==='Green'?'selected':''%> >Green</option>
+                          <option value="Blue" <%=data.activeColor==='Blue'?'selected':''%> > Blue</option>
+                        </select>
+                      </div>
+                      <div class="form-check mt-3">
+                        <label class="form-check-label" for="isAvailable">  Is Available </label>
+                        <input class="form-check-input" type="checkbox" name="isAvailable" id="isAvailable" checked=<%=data.isAvailable%> >
+                     
+                      </div>
+                      <div class="form-check mt-3 text-center">
+                        <%if(data._id) {%>
+                            <button type="submit" class="btn btn-success me-2" style="min-width: 150px;" >Update</button>
+                        <%}
+                        else { %>
+                            <button type="submit" class="btn btn-success me-2" style="min-width: 150px;" >Save</button>
+
+                       <%}%>
+                        <button type="button" class="btn btn-danger" style="min-width: 150px;" onclick="location.href='/ui'">Cancel</button>
+                      </div>
+    
+                      
+                </div>
+              </div>
+        </form>
+    </section>
+
+</body>
+</html>

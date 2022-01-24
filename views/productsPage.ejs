@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="text-center m-5">Products List</h1> 
+        </div>
+        <div class="d-flex justify-content-end mb-3">
+            <!-- <a href="/ui/new" class="btn btn-primary btn-lg"  role="button" aria-disabled="true">Add New Product</a> -->
+   
+            <button type="button" class="btn btn-success me-2" onclick="location.href='/ui/new'">Add New Product</button>
+
+        </div>
+        <div class="d-flex flex-row flex-wrap"> 
+            <% 
+                const images = ["https://cdn.vox-cdn.com/thumbor/3o5bkD-T3oQ3EIfXotA4k9P97TY=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/22443013/5.png",
+                                "https://i5.walmartimages.com/asr/b16c6dcf-98b5-4000-b106-728647912d81_1.ae9db2c3a2020d02b73f03d740cdef14.jpeg",
+                                "https://i5.walmartimages.com/asr/5b6a01f4-dd03-4f73-997d-288e64d9599e_1.ba82721511e69ad57448ce3194b788fe.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"]
+                data.map(each=>{%>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 p-2">
+                    <div class="card" >
+                        <img src="<%= images[Math.floor(Math.random() * 3)]%>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= each.name%></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><%= each.price%> / <%= each.activeColor%></h6> 
+                            <button class="btn btn-primary mx-auto" onclick="location.href='/ui/edit/<%= each._id%>'">Edit</button>
+                            <button class="btn btn-danger mx-auto" onclick="location.href='/ui/delete/<%= each._id%>'">Delete</button> 
+                        
+                        </div>
+                </div>
+                </div>
+                    
+              <% })%>
+        </div>
+
+    </div>
+    
+</body>
+</html>
